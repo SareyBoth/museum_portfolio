@@ -12,6 +12,16 @@
 
 # testing
 /coverage
+/shots/
+/shots_verify/
+/sitecheck_shots/
+
+# knowledge graph
+/graphify-out/
+
+# python
+*.pyc
+__pycache__/
 
 # next.js
 /.next/

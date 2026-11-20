@@ -469,7 +469,7 @@ function createArtworkPosterTexture(artwork: ArtworkData): THREE.CanvasTexture {
 
       // Track A1 (Audio waveforms)
       cx = -tW / 2 + 10;
-      clipWidths.forEach((cw, i) => {
+      clipWidths.forEach((cw) => {
         ctx.fillStyle = 'rgba(56, 189, 248, 0.15)';
         ctx.fillRect(cx, tY + 48, cw, 34);
         ctx.strokeStyle = 'rgba(56, 189, 248, 0.3)';
