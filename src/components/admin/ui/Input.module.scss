@@ -1,0 +1,131 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-1-5;
+  width: 100%;
+}
+
+.label {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: t.$text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.optional {
+  color: t.$text-muted;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  background-color: t.$bg-surface;
+  border: 1px solid t.$border-control;
+  border-radius: t.$radius-xs;
+  color: t.$text-primary;
+  font-family: t.$font-mono;
+  font-size: 0.8125rem;
+  transition: all t.$transition-fast;
+  padding: 0 t.$space-3-5;
+  min-height: 42px;
+
+  &::placeholder {
+    color: rgba(184, 176, 164, 0.4);
+  }
+
+  @include m.focus-ring(t.$accent);
+
+  &:hover:not(:disabled):not(:focus-visible) {
+    border-color: t.$border-control-hover;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: t.$bg-canvas;
+  }
+}
+
+.hasLeadingIcon {
+  padding-left: t.$space-10;
+}
+
+.hasTrailingIcon {
+  padding-right: t.$space-10;
+}
+
+.leadingIcon {
+  position: absolute;
+  left: t.$space-3;
+  color: t.$text-muted;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.trailingAction {
+  position: absolute;
+  right: t.$space-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textarea {
+  min-height: 96px;
+  padding: t.$space-2-5 t.$space-3-5;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8b0a4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 14px;
+  padding-right: t.$space-8;
+}
+
+.error {
+  border-color: t.$danger !important;
+
+  &:focus-visible {
+    outline-color: t.$danger !important;
+  }
+}
+
+.errorMessage {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$danger;
+  display: flex;
+  align-items: center;
+  gap: t.$space-1;
+}
+
+.hint {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-muted;
+}

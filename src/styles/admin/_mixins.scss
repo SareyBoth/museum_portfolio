@@ -1,0 +1,71 @@
+@use '@/styles/admin/tokens' as t;
+
+// Elevated surface card with subtle 1px border
+@mixin surface-card($bg: t.$bg-card, $border: t.$border-subtle) {
+  background-color: $bg;
+  border: 1px solid $border;
+  border-radius: t.$radius-sm;
+  box-shadow: t.$shadow-card;
+}
+
+// Crisp 1px hairline border
+@mixin hairline($color: t.$border-subtle, $side: null) {
+  @if $side == null {
+    border: 1px solid $color;
+  } @else {
+    border-#{$side}: 1px solid $color;
+  }
+}
+
+// Accessible, high-contrast focus-visible ring
+@mixin focus-ring($color: t.$accent) {
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 2px;
+  }
+}
+
+// Custom editorial thin scrollbars
+@mixin custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(214, 199, 178, 0.22) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(214, 199, 178, 0.22);
+    border-radius: t.$radius-xs;
+
+    &:hover {
+      background-color: rgba(214, 199, 178, 0.38);
+    }
+  }
+}
+
+// Text truncation
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Breakpoint helpers
+@mixin respond-to($media) {
+  @if $media == 'mobile-only' {
+    @media (max-width: 639px) { @content; }
+  } @else if $media == 'tablet-down' {
+    @media (max-width: 1023px) { @content; }
+  } @else if $media == 'desktop-up' {
+    @media (min-width: 1024px) { @content; }
+  } @else if $media == 'wide-up' {
+    @media (min-width: 1280px) { @content; }
+  }
+}

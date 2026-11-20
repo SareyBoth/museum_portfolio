@@ -1,0 +1,49 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.emptyState {
+  padding: t.$space-10 t.$space-6;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed t.$border-control;
+  border-radius: t.$radius-xs;
+  background-color: rgba(6, 7, 9, 0.4);
+}
+
+.iconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: t.$radius-xs;
+  background-color: t.$bg-elevated;
+  border: 1px solid t.$border-subtle;
+  color: t.$accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: t.$space-4;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.description {
+  margin: t.$space-1 0 t.$space-5;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+  max-width: 380px;
+  line-height: 1.5;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+}

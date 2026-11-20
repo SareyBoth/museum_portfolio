@@ -1,0 +1,138 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-6;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.countText {
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-4;
+}
+
+.itemCard {
+  @include m.surface-card(t.$bg-card, t.$border-subtle);
+  padding: t.$space-5;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+  transition: all t.$transition-fast;
+
+  &:hover {
+    border-color: t.$border-control;
+    box-shadow: t.$shadow-modal;
+  }
+}
+
+.itemHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: t.$space-4;
+}
+
+.itemRole {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.itemOrgLine {
+  margin: t.$space-1 0 0;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+}
+
+.highlightsList {
+  margin: 0;
+  padding-left: t.$space-4;
+  font-size: 0.8125rem;
+  color: t.$text-secondary;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: t.$space-1;
+}
+
+// Drawer
+.drawerBackdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(6, 7, 9, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: t.$z-modal;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.18s ease-out;
+}
+
+.drawer {
+  width: 520px;
+  max-width: 100vw;
+  height: 100%;
+  background-color: t.$bg-surface;
+  border-left: 1px solid t.$border-control;
+  display: flex;
+  flex-direction: column;
+  box-shadow: t.$shadow-modal;
+}
+
+.drawerHeader {
+  padding: t.$space-5 t.$space-6;
+  border-bottom: 1px solid t.$border-subtle;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawerTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.drawerBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: t.$space-6;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-4-5;
+  @include m.custom-scrollbar;
+}
+
+.drawerFooter {
+  padding: t.$space-4 t.$space-6;
+  border-top: 1px solid t.$border-subtle;
+  background-color: rgba(6, 7, 9, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: t.$space-3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

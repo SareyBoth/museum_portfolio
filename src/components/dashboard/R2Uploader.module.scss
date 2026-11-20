@@ -1,0 +1,130 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.container {
+  width: 100%;
+}
+
+.dropzone {
+  position: relative;
+  border: 1px dashed t.$border-control;
+  background-color: t.$bg-surface;
+  border-radius: t.$radius-xs;
+  padding: t.$space-6;
+  text-align: center;
+  cursor: pointer;
+  transition: all t.$transition-fast;
+
+  &:hover {
+    border-color: t.$border-control-hover;
+    background-color: t.$bg-hover;
+  }
+
+  &.dragOver {
+    border-color: t.$accent;
+    background-color: t.$accent-subtle;
+  }
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: t.$space-2;
+}
+
+.iconWrap {
+  color: t.$accent;
+  margin-bottom: t.$space-1;
+}
+
+.previewImage {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: t.$radius-xs;
+  border: 1px solid t.$border-control;
+}
+
+.primaryText {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: t.$text-primary;
+  display: inline-flex;
+  align-items: center;
+  gap: t.$space-1-5;
+}
+
+.subText {
+  margin: 0;
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-muted;
+}
+
+// Progress / Uploading
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.progressLabel {
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-primary;
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 6px;
+  background-color: t.$bg-canvas;
+  border-radius: t.$radius-pill;
+  overflow: hidden;
+  border: 1px solid t.$border-hairline;
+}
+
+.progressBarFill {
+  height: 100%;
+  background-color: t.$accent;
+  transition: width 0.25s linear;
+  border-radius: t.$radius-pill;
+}
+
+// Complete
+.completeWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: t.$space-1-5;
+  color: t.$success;
+}
+
+.completeText {
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+// Error
+.errorAlert {
+  margin-top: t.$space-2;
+  padding: t.$space-2-5 t.$space-3;
+  background-color: t.$danger-bg;
+  border: 1px solid t.$danger-border;
+  border-radius: t.$radius-xs;
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$danger;
+}

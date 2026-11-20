@@ -1,0 +1,102 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.dialog {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: t.$text-primary;
+  max-width: 440px;
+  width: calc(100% - 2rem);
+  margin: auto;
+  border-radius: t.$radius-sm;
+  box-shadow: t.$shadow-modal;
+  z-index: t.$z-modal;
+
+  &::backdrop {
+    background: rgba(6, 7, 9, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  &[open] {
+    animation: dialogFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+.card {
+  @include m.surface-card(t.$bg-card, t.$border-control);
+  padding: t.$space-6;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-5;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: t.$space-3-5;
+}
+
+.iconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: t.$radius-xs;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &.danger {
+    background-color: t.$danger-bg;
+    color: t.$danger;
+    border: 1px solid t.$danger-border;
+  }
+
+  &.warning {
+    background-color: t.$warning-bg;
+    color: t.$warning;
+    border: 1px solid t.$warning-border;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-1;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.message {
+  margin: 0;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: t.$space-3;
+  padding-top: t.$space-2;
+  border-top: 1px solid t.$border-hairline;
+}
+
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

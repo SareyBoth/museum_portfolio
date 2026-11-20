@@ -1,0 +1,41 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+// Global scoped stylesheet for Atelier Admin & Auth Suite
+// Scoped under `.adminScope` to ensure zero style leakage into the public gallery.
+.adminScope {
+  --admin-bg-canvas: #{t.$bg-canvas};
+  --admin-bg-surface: #{t.$bg-surface};
+  --admin-bg-card: #{t.$bg-card};
+  --admin-bg-elevated: #{t.$bg-elevated};
+  --admin-bg-hover: #{t.$bg-hover};
+  --admin-border-subtle: #{t.$border-subtle};
+  --admin-border-control: #{t.$border-control};
+  --admin-text-primary: #{t.$text-primary};
+  --admin-text-secondary: #{t.$text-secondary};
+  --admin-text-muted: #{t.$text-muted};
+  --admin-accent: #{t.$accent};
+  --admin-accent-hover: #{t.$accent-hover};
+
+  box-sizing: border-box;
+  color: t.$text-primary;
+  background-color: t.$bg-canvas;
+  font-family: t.$font-sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button, input, select, textarea {
+    font-family: inherit;
+  }
+
+  @include m.custom-scrollbar;
+}

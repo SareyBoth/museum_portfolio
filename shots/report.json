@@ -1,0 +1,110 @@
+[
+  {
+    "name": "default-chromium-1440",
+    "url": "http://127.0.0.1:3005/",
+    "browser": "chromium",
+    "width": 1440,
+    "reduced": false,
+    "scroll": null,
+    "ready_s": 2.54,
+    "ms_per_frame": 19.3,
+    "fps": 51.8,
+    "errors": [],
+    "blank_canvases": 0,
+    "overflow": false,
+    "gl": {
+      "lost": false,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "three": {
+      "calls": 324,
+      "triangles": 39952,
+      "geometries": 44,
+      "textures": 17,
+      "programs": 17
+    },
+    "heapMB": 12,
+    "file": "shots\\default-chromium-1440.png"
+  },
+  {
+    "name": "default-chromium-768",
+    "url": "http://127.0.0.1:3005/",
+    "browser": "chromium",
+    "width": 768,
+    "reduced": false,
+    "scroll": null,
+    "ready_s": 0.79,
+    "ms_per_frame": 16.4,
+    "fps": 60.9,
+    "errors": [],
+    "blank_canvases": 0,
+    "overflow": false,
+    "gl": {
+      "lost": false,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "three": {
+      "calls": 292,
+      "triangles": 39728,
+      "geometries": 39,
+      "textures": 15,
+      "programs": 17
+    },
+    "heapMB": 13,
+    "file": "shots\\default-chromium-768.png"
+  },
+  {
+    "name": "default-chromium-390",
+    "url": "http://127.0.0.1:3005/",
+    "browser": "chromium",
+    "width": 390,
+    "reduced": false,
+    "scroll": null,
+    "ready_s": 1.11,
+    "ms_per_frame": 19.8,
+    "fps": 50.5,
+    "errors": [],
+    "blank_canvases": 0,
+    "overflow": false,
+    "gl": {
+      "lost": false,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "three": {
+      "calls": 292,
+      "triangles": 39728,
+      "geometries": 39,
+      "textures": 15,
+      "programs": 17
+    },
+    "heapMB": 10,
+    "file": "shots\\default-chromium-390.png"
+  },
+  {
+    "name": "default-chromium-1440-reduced",
+    "url": "http://127.0.0.1:3005/",
+    "browser": "chromium",
+    "width": 1440,
+    "reduced": true,
+    "scroll": null,
+    "ready_s": 1.09,
+    "ms_per_frame": 22.6,
+    "fps": 44.3,
+    "errors": [],
+    "blank_canvases": 0,
+    "overflow": false,
+    "gl": {
+      "lost": false,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "three": {
+      "calls": 324,
+      "triangles": 39952,
+      "geometries": 44,
+      "textures": 17,
+      "programs": 17
+    },
+    "heapMB": 12,
+    "file": "shots\\default-chromium-1440-reduced.png"
+  }
+]

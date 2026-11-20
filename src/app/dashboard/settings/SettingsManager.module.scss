@@ -1,0 +1,168 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-8;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-4;
+}
+
+.accountMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: t.$space-4;
+
+  @include m.respond-to('mobile-only') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metaItem {
+  padding: t.$space-4;
+  background-color: t.$bg-surface;
+  border-radius: t.$radius-xs;
+  border: 1px solid t.$border-subtle;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaLabel {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-muted;
+  text-transform: uppercase;
+}
+
+.metaValue {
+  font-family: t.$font-mono;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+// Password Form
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-4;
+  max-width: 480px;
+}
+
+// Sessions Table
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid t.$border-subtle;
+  border-radius: t.$radius-xs;
+  background-color: t.$bg-surface;
+  @include m.custom-scrollbar;
+}
+
+.sessionsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  text-align: left;
+
+  th {
+    padding: t.$space-3 t.$space-4;
+    background-color: t.$bg-elevated;
+    border-bottom: 1px solid t.$border-hairline;
+    color: t.$text-secondary;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+  }
+
+  td {
+    padding: t.$space-3-5 t.$space-4;
+    border-bottom: 1px solid t.$border-hairline;
+    color: t.$text-primary;
+    vertical-align: middle;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+.deviceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.deviceName {
+  font-weight: 600;
+  color: t.$text-primary;
+}
+
+.ipAddress {
+  color: t.$text-muted;
+  font-size: 0.6875rem;
+}
+
+// Infrastructure Telemetry
+.telemetryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: t.$space-6;
+
+  @include m.respond-to('tablet-down') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.telemetryBox {
+  padding: t.$space-5;
+  background-color: t.$bg-surface;
+  border-radius: t.$radius-xs;
+  border: 1px solid t.$border-subtle;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-4;
+}
+
+.telemetryTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.telemetryTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  font-family: t.$font-mono;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  &.ok {
+    background-color: t.$success;
+    box-shadow: 0 0 8px t.$success;
+  }
+
+  &.degraded {
+    background-color: t.$danger;
+    box-shadow: 0 0 8px t.$danger;
+  }
+}

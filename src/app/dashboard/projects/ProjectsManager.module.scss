@@ -1,0 +1,256 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-6;
+}
+
+// Toolbar
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-4;
+  flex-wrap: wrap;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  flex-wrap: wrap;
+}
+
+.searchWrap {
+  width: 240px;
+
+  @include m.respond-to('mobile-only') {
+    width: 100%;
+  }
+}
+
+.filterBtn {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.75rem;
+  border-radius: t.$radius-xs;
+  border: 1px solid t.$border-control;
+  background-color: t.$bg-surface;
+  color: t.$text-secondary;
+  cursor: pointer;
+  transition: all t.$transition-fast;
+
+  &:hover {
+    color: t.$text-primary;
+    border-color: t.$border-control-hover;
+  }
+
+  &.active {
+    background-color: t.$accent-subtle;
+    border-color: t.$accent;
+    color: t.$accent;
+    font-weight: 700;
+  }
+}
+
+// Project Cards Grid
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: t.$space-5;
+
+  @include m.respond-to('mobile-only') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectCard {
+  @include m.surface-card(t.$bg-card, t.$border-subtle);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all t.$transition-fast;
+
+  &:hover {
+    border-color: t.$border-control;
+    transform: translateY(-2px);
+    box-shadow: t.$shadow-modal;
+  }
+}
+
+.thumbnailWrap {
+  width: 100%;
+  height: 180px;
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnailImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnailFallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: t.$space-2;
+  color: t.$text-muted;
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+}
+
+.aspectPill {
+  position: absolute;
+  top: t.$space-2-5;
+  left: t.$space-2-5;
+}
+
+.statusPills {
+  position: absolute;
+  top: t.$space-2-5;
+  right: t.$space-2-5;
+  display: flex;
+  gap: 4px;
+}
+
+.cardContent {
+  padding: t.$space-4;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-2;
+  flex: 1;
+}
+
+.cardMetaLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-muted;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: t.$text-primary;
+  line-height: 1.3;
+}
+
+.cardDesc {
+  margin: 0;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.cardFooter {
+  padding: t.$space-3 t.$space-4;
+  background-color: rgba(6, 7, 9, 0.4);
+  border-top: 1px solid t.$border-hairline;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: t.$space-1-5;
+}
+
+// Drawer / Modal Form
+.drawerBackdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(6, 7, 9, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: t.$z-modal;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.18s ease-out;
+}
+
+.drawer {
+  width: 600px;
+  max-width: 100vw;
+  height: 100%;
+  background-color: t.$bg-surface;
+  border-left: 1px solid t.$border-control;
+  display: flex;
+  flex-direction: column;
+  box-shadow: t.$shadow-modal;
+  animation: slideLeft 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawerHeader {
+  padding: t.$space-5 t.$space-6;
+  border-bottom: 1px solid t.$border-subtle;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawerTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.drawerBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: t.$space-6;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-5;
+  @include m.custom-scrollbar;
+}
+
+.drawerFooter {
+  padding: t.$space-4 t.$space-6;
+  border-top: 1px solid t.$border-subtle;
+  background-color: rgba(6, 7, 9, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: t.$space-3;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: t.$space-4;
+
+  @include m.respond-to('mobile-only') {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}

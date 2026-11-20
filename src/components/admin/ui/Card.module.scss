@@ -1,0 +1,62 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.card {
+  @include m.surface-card(t.$bg-card, t.$border-subtle);
+  overflow: hidden;
+  position: relative;
+}
+
+.header {
+  padding: t.$space-5 t.$space-6;
+  border-bottom: 1px solid t.$border-hairline;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-4;
+
+  @include m.respond-to('mobile-only') {
+    padding: t.$space-4;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-1;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: t.$text-primary;
+  letter-spacing: -0.01em;
+}
+
+.description {
+  margin: 0;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+}
+
+.body {
+  padding: t.$space-6;
+
+  @include m.respond-to('mobile-only') {
+    padding: t.$space-4;
+  }
+}
+
+.footer {
+  padding: t.$space-4 t.$space-6;
+  background-color: rgba(6, 7, 9, 0.4);
+  border-top: 1px solid t.$border-hairline;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: t.$space-3;
+}

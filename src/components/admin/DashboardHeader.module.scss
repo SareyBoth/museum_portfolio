@@ -1,0 +1,134 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.header {
+  height: 64px;
+  background-color: rgba(11, 12, 14, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid t.$border-subtle;
+  position: sticky;
+  top: 0;
+  z-index: t.$z-sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 t.$space-8;
+
+  @include m.respond-to('tablet-down') {
+    padding: 0 t.$space-4;
+  }
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: t.$space-4;
+}
+
+.mobileMenuBtn {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: t.$radius-xs;
+  background: t.$bg-elevated;
+  border: 1px solid t.$border-control;
+  color: t.$text-primary;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all t.$transition-fast;
+
+  &:hover {
+    border-color: t.$border-control-hover;
+    background-color: t.$bg-hover;
+  }
+
+  @include m.respond-to('tablet-down') {
+    display: flex;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+}
+
+.breadcrumbRoot {
+  color: t.$text-muted;
+  text-decoration: none;
+
+  &:hover {
+    color: t.$text-primary;
+  }
+}
+
+.breadcrumbSeparator {
+  color: t.$text-muted;
+}
+
+.breadcrumbCurrent {
+  color: t.$text-primary;
+  font-weight: 600;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: t.$space-3;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: t.$space-1-5;
+  padding: 0.25rem t.$space-3;
+  border-radius: t.$radius-pill;
+  background-color: rgba(6, 7, 9, 0.5);
+  border: 1px solid t.$border-subtle;
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-secondary;
+
+  @include m.respond-to('mobile-only') {
+    display: none;
+  }
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: t.$success;
+  box-shadow: 0 0 6px t.$success;
+}
+
+.quickLink {
+  display: inline-flex;
+  align-items: center;
+  gap: t.$space-1-5;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: t.$accent;
+  text-decoration: none;
+  padding: 0.35rem t.$space-3;
+  border-radius: t.$radius-xs;
+  border: 1px solid t.$border-accent;
+  background-color: t.$accent-subtle;
+  transition: all t.$transition-fast;
+
+  &:hover {
+    background-color: rgba(229, 169, 60, 0.2);
+    border-color: t.$accent;
+  }
+
+  @include m.respond-to('mobile-only') {
+    padding: 0.35rem t.$space-2;
+    span { display: none; }
+  }
+}

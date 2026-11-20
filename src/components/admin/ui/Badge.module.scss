@@ -1,0 +1,59 @@
+@use '@/styles/admin/tokens' as t;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: t.$space-1-5;
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.55rem;
+  border-radius: t.$radius-xs;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.neutral {
+  background-color: rgba(214, 199, 178, 0.08);
+  color: t.$text-secondary;
+  border: 1px solid t.$border-subtle;
+}
+
+.gold {
+  background-color: t.$accent-subtle;
+  color: t.$accent;
+  border: 1px solid t.$border-accent;
+}
+
+.success {
+  background-color: t.$success-bg;
+  color: t.$success;
+  border: 1px solid t.$success-border;
+}
+
+.warning {
+  background-color: t.$warning-bg;
+  color: t.$warning;
+  border: 1px solid t.$warning-border;
+}
+
+.danger {
+  background-color: t.$danger-bg;
+  color: t.$danger;
+  border: 1px solid t.$danger-border;
+}
+
+.info {
+  background-color: t.$info-bg;
+  color: t.$info;
+  border: 1px solid t.$info-border;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}

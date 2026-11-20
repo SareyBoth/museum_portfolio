@@ -1,0 +1,45 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.layoutRoot {
+  display: flex;
+  height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  background-color: t.$bg-canvas;
+  color: t.$text-primary;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.mainScrollArea {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  @include m.custom-scrollbar;
+}
+
+.mainContent {
+  padding: t.$space-8;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+
+  @include m.respond-to('tablet-down') {
+    padding: t.$space-6 t.$space-4;
+  }
+}

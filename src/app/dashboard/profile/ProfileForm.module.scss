@@ -1,0 +1,174 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-8;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-1;
+  margin-bottom: t.$space-6;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.sectionDescription {
+  margin: 0;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: t.$space-4;
+
+  @include m.respond-to('tablet-down') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: t.$space-6;
+
+  @include m.respond-to('tablet-down') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.togglesRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-6;
+  padding: t.$space-4;
+  background-color: t.$bg-surface;
+  border-radius: t.$radius-xs;
+  border: 1px solid t.$border-subtle;
+}
+
+.toggleLabel {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2-5;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-primary;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: t.$accent;
+  cursor: pointer;
+}
+
+// Media slots
+.mediaCard {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+}
+
+.previewPortraitWrap {
+  width: 120px;
+  aspect-ratio: 4/5;
+  border-radius: t.$radius-xs;
+  overflow: hidden;
+  border: 1px solid t.$border-control;
+  background-color: #000;
+}
+
+.previewPortraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.cvLinkedBox {
+  padding: t.$space-4;
+  background-color: t.$bg-surface;
+  border: 1px solid t.$border-subtle;
+  border-radius: t.$radius-xs;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-2;
+}
+
+.cvLinkedStatus {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$success;
+  font-weight: 600;
+}
+
+.cvUrlLink {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$accent;
+  @include m.truncate;
+  text-decoration: underline;
+
+  &:hover {
+    color: t.$accent-hover;
+  }
+}
+
+// Sticky Save Bar
+.stickyActionBar {
+  position: sticky;
+  bottom: t.$space-6;
+  z-index: t.$z-sticky;
+  background-color: rgba(11, 12, 14, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid t.$border-control;
+  border-radius: t.$radius-xs;
+  padding: t.$space-4 t.$space-6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: t.$shadow-modal;
+
+  @include m.respond-to('mobile-only') {
+    flex-direction: column;
+    gap: t.$space-3;
+    bottom: t.$space-3;
+    padding: t.$space-3 t.$space-4;
+  }
+}
+
+.actionMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.actionTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.actionSub {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-muted;
+}

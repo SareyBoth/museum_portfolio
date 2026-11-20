@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+:root {
+  --background: #060709;
+  --foreground: #f4efe6;
+
+  /* Option A: Dual-Surface Museum Wing Tokens */
+  --museum-obsidian: #0f1012;
+  --museum-charcoal: #16171b;
+  --museum-steel: rgba(214, 199, 178, 0.18);
+  --museum-steel-control: rgba(214, 199, 178, 0.46);
+  --museum-ivory: #f4efe6;
+  --museum-ash: #b8b0a4;
+
+  --museum-travertine: #efe9df;
+  --museum-stone: #e4dbcd;
+  --museum-stone-mid: #d6c7b2;
+  --museum-mortar: rgba(20, 21, 24, 0.18);
+  --museum-mortar-control: rgba(20, 21, 24, 0.48);
+  --museum-ink: #141518;
+  --museum-slate: #4e4942;
+
+  /* Single Calibrated Accent (Museum Tungsten Gold + Dark Ochre on light stone) */
+  --museum-gold: #e5a93c;
+  --museum-ochre: #7e4f07;
+  --museum-cyan: #38bdf8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #060709;
+  color: #f4efe6;
+  font-family: var(--font-sans);
+}
+
+/* Explicit surface themes: color-scheme paired with explicit background & ink colors */
+.surface-concrete {
+  color-scheme: dark;
+  background-color: var(--museum-obsidian);
+  color: var(--museum-ivory);
+}
+
+.surface-charcoal {
+  color-scheme: dark;
+  background-color: var(--museum-charcoal);
+  color: var(--museum-ivory);
+}
+
+.surface-travertine {
+  color-scheme: light;
+  background-color: var(--museum-travertine);
+  color: var(--museum-ink);
+}
+
+/* Architectural custom scrollbar (standard properties + legacy WebKit fallback) */
+.portal-scroller {
+  --scrollbar-thumb: #b8aa94;
+  --scrollbar-track: #0f1012;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+@supports not (scrollbar-color: auto) {
+  .portal-scroller {
+    scrollbar-width: auto;
+  }
+
+  .portal-scroller::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .portal-scroller::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  .portal-scroller::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+  }
+}
+
+/* High-contrast accessible focus ring */
+.portal-scroller :where(a:any-link, button, input, summary, [tabindex]):focus-visible,
+dialog.museum-dialog :where(a:any-link, button, input, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--museum-gold);
+  outline-offset: 3px;
+}
+
+.surface-travertine :where(a:any-link, button, input, summary, [tabindex]):focus-visible {
+  outline-color: var(--museum-ochre);
+}
+
+/* Subtle architectural grid hairline motif echoing the 3D gallery floor */
+.museum-grid-backdrop {
+  background-image:
+    linear-gradient(to right, rgba(214, 199, 178, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(214, 199, 178, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.travertine-ashlar-backdrop {
+  background-image:
+    linear-gradient(to right, rgba(20, 21, 24, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 21, 24, 0.04) 1px, transparent 1px);
+  background-size: 96px 48px;
+}
+
+/* Motion opt-in: never animate ambient pulses when reduced-motion is preferred */
+.status-pulse {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .status-pulse {
+    animation: museum-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+[inert] .status-pulse {
+  animation: none;
+}
+
+@keyframes museum-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* Native top-layer modal dialogs (modern-web-guidance: dialog + animate-to-from-top-layer) */
+dialog.museum-dialog {
+  color-scheme: dark;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--museum-steel-control);
+  background-color: var(--museum-obsidian);
+  color: var(--museum-ivory);
+  opacity: 0;
+}
+
+dialog.museum-dialog[open] {
+  opacity: 1;
+  transition-property: opacity, transform;
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@starting-style {
+  dialog.museum-dialog[open] {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog.museum-dialog[open] {
+    transform: translateY(0) scale(1);
+  }
+
+  @starting-style {
+    dialog.museum-dialog[open] {
+      transform: translateY(10px) scale(0.985);
+    }
+  }
+}
+
+dialog.museum-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog.museum-dialog::backdrop {
+  background-color: rgba(6, 7, 9, 0.84);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+dialog.museum-dialog[open]::backdrop {
+  background-color: rgba(6, 7, 9, 0.84);
+  transition: background-color 0.22s ease-out;
+}
+
+@starting-style {
+  dialog.museum-dialog[open]::backdrop {
+    background-color: rgba(6, 7, 9, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog.museum-dialog,
+  dialog.museum-dialog[open],
+  dialog.museum-dialog[open]::backdrop {
+    transition-duration: 0.08s;
+  }
+}
+
+/* Brand-consistent native range input for Before/After color & retouch comparator */
+.comparison-range {
+  accent-color: var(--museum-gold);
+  min-height: 44px;
+}
+
+@supports not (accent-color: #e5a93c) {
+  .comparison-range {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+  }
+  .comparison-range::-webkit-slider-runnable-track {
+    height: 4px;
+    background: rgba(244, 239, 230, 0.35);
+  }
+  .comparison-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    margin-top: -7px;
+    background: var(--museum-gold);
+    border-radius: 2px;
+  }
+}
+
+/* Print optimization for Curriculum Vitae sheet */
+@media print {
+  html,
+  body,
+  main,
+  .portal-scroller {
+    position: static !important;
+    height: auto !important;
+    width: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  dialog.museum-dialog[open] {
+    color-scheme: light !important;
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  dialog.museum-dialog[open]::backdrop {
+    display: none !important;
+  }
+
+  .cv-printable,
+  .cv-printable * {
+    background: #ffffff !important;
+    color: #111111 !important;
+    border-color: #cccccc !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+}

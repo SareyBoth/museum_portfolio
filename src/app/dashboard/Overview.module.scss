@@ -1,0 +1,223 @@
+@use '@/styles/admin/tokens' as t;
+@use '@/styles/admin/mixins' as m;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-8;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-1;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: t.$text-primary;
+}
+
+.subtitle {
+  margin: 0;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+}
+
+// KPI Grid
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: t.$space-4;
+
+  @include m.respond-to('tablet-down') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond-to('mobile-only') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kpiCard {
+  @include m.surface-card(t.$bg-card, t.$border-subtle);
+  padding: t.$space-5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: t.$space-3;
+  transition: border-color t.$transition-fast;
+
+  &:hover {
+    border-color: t.$border-control;
+  }
+}
+
+.kpiTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kpiLabel {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.kpiIcon {
+  color: t.$accent;
+  width: 16px;
+  height: 16px;
+}
+
+.kpiValueArea {
+  display: flex;
+  align-items: baseline;
+  gap: t.$space-2;
+}
+
+.kpiValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: t.$text-primary;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.kpiLink {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$accent;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    color: t.$accent-hover;
+    text-decoration: underline;
+  }
+}
+
+.telemetryStatus {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &.ok {
+    background-color: t.$success;
+    box-shadow: 0 0 8px t.$success;
+  }
+
+  &.degraded {
+    background-color: t.$danger;
+    box-shadow: 0 0 8px t.$danger;
+  }
+}
+
+.statusText {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: t.$text-primary;
+}
+
+.latency {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-muted;
+  font-variant-numeric: tabular-nums;
+}
+
+// Inquiries Feed
+.inquiryList {
+  display: flex;
+  flex-direction: column;
+  divide-y: 1px solid t.$border-hairline;
+}
+
+.inquiryItem {
+  padding: t.$space-4 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: t.$space-4;
+  border-bottom: 1px solid t.$border-hairline;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  @include m.respond-to('mobile-only') {
+    flex-direction: column;
+  }
+}
+
+.inquiryLeft {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-1;
+  min-width: 0;
+}
+
+.inquiryClientLine {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: t.$space-2;
+}
+
+.clientName {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: t.$text-primary;
+}
+
+.clientEmail {
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  color: t.$text-secondary;
+}
+
+.inquiryMessage {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: t.$text-secondary;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 600px;
+}
+
+.inquiryRight {
+  display: flex;
+  align-items: center;
+  gap: t.$space-3;
+  flex-shrink: 0;
+}
+
+.timeAgo {
+  font-family: t.$font-mono;
+  font-size: 0.6875rem;
+  color: t.$text-muted;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
